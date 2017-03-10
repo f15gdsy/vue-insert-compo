@@ -1,0 +1,23 @@
+{
+  "name": "vue-insert-compo",
+  "version": "0.1.0",
+  "description": "A lightweight helper to insert Vue component and create Vue popups easily.",
+  "main": "dist/vue-insert-compo.min.js",
+  "license": "MIT",
+  "author": {
+    "name": "Wu Yifeng",
+    "email": "f15gdsy@gmail.com"
+  },
+  "scripts": {
+    "start": "webpack -w"
+  },
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.4.0",
+    "babel-preset-env": "^1.2.1",
+    "webpack": "^2.2.1"
+  },
+  "peerDependencies": {
+    "vue": "^2.2.2"
+  }
+}

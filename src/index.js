@@ -24,7 +24,8 @@ function showAppEl(appEl) {
   appEl.style.overflow = 'inherit';
 }
 
-export default class InsertCompo {
+
+class InsertCompo {
   constructor(Compo, userOpts) {
     this.Compo = Compo;
     this.update(userOpts);
@@ -58,6 +59,12 @@ export default class InsertCompo {
     this.instance.enable = !this.instance.enable;
   }
 
+  destroy() {
+    if (this.$instance) {
+      this.$instance.$destroy();
+    }
+  }
+
   setCompoProp(key, val) {
     this.instance[key] = val;
   }
@@ -83,3 +90,6 @@ export default class InsertCompo {
     return this.$instance;
   }
 }
+
+
+export default InsertCompo;

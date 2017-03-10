@@ -1,6 +1,6 @@
 {
   "name": "vue-insert-compo",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A lightweight helper to insert Vue component and create Vue popups easily.",
   "main": "dist/vue-insert-compo.min.js",
   "license": "MIT",

@@ -1,95 +1,109 @@
-import Vue from 'vue';
+import Vue from 'vue'
 
-const elBody = document.querySelector('body');
+const elBody = document.querySelector('body')
 
 const DEFAULT_OPTS = {
-  appEl: '#app',
-  hideApp: false,
-  wrapperTag: 'div',
-  beforeEnable: () => {},
-  afterEnable: () => {},
-  beforeDisable: () => {},
-  afterDisable: () => {}
-};
-
-function hideAppEl(appEl) {
-  appEl.style.visibility = 'hidden';
-  appEl.style.height = '0';
-  appEl.style.overflow = 'hidden';
+  hideEl: null
 }
 
-function showAppEl(appEl) {
-  appEl.style.visibility = 'visible';
-  appEl.style.height = 'auto';
-  appEl.style.overflow = 'inherit';
+function hideEl(el) {
+  el.style.visibility = 'hidden'
+  el.style.height = '0'
+  el.style.overflow = 'hidden'
+}
+
+function showEl(el) {
+  el.style.visibility = 'visible'
+  el.style.height = 'auto'
+  el.style.overflow = 'inherit'
+}
+
+function checkCompo(Compo) {
+  const defaultData = typeof Compo.data === 'function' ? Compo.data() : Compo.data
+  if (defaultData.enable === undefined) {
+    throw new TypeError('Vue Insert Compo: { Boolean } enable - is required in data()')
+  }
 }
 
 
-class InsertCompo {
+export default class InsertCompo {
   constructor(Compo, userOpts) {
-    this.Compo = Compo;
-    this.update(userOpts);
+    checkCompo(Compo)
+
+    this.Compo = Compo
+    this.$update(userOpts)
   }
 
-  update(val) {
-    this.opts = Object.assign({}, DEFAULT_OPTS, val);
+  $update(val) {
+    this.opts = Object.assign({}, DEFAULT_OPTS, val)
 
-    const appEl = this.opts.appEl;
+    const elToHide = this.opts.hideEl
 
-    this.appEl = typeof appEl === 'string' ? document.querySelector(appEl) : appEl;
+    if (!elToHide) return
+
+    if (typeof elToHide === 'string') {
+      this.hideEl = document.querySelector(elToHide)
+    } else if (elToHide.tagName) {
+      this.hideEl = elToHide
+    } else {
+      throw new TypeError('Vue Insert Compo: invalid hideEl')
+    }
   }
 
   enable() {
-    this.opts.beforeEnable();
-    this.instance.enable = true;
-    setTimeout(() => {
-      this.opts.afterEnable();
-    });
+    this.instance.enable = true
+
+    return new Promise(resolve => {
+      Vue.nextTick(() => {
+        resolve()
+      })
+    })
   }
 
   disable() {
-    this.opts.beforeDisable();
-    this.instance.enable = false;
-    setTimeout(() => {
-      this.opts.afterDisable();
-    });
+    this.instance.enable = false
+
+    return new Promise(resolve => {
+      Vue.nextTick(() => {
+        resolve()
+      })
+    })
   }
 
   toggle() {
-    this.instance.enable = !this.instance.enable;
+    return this.instance.enable ? this.disable() : this.enable()
   }
 
   destroy() {
     if (this.$instance) {
-      this.$instance.$destroy();
+      const el = this.$instance.$el
+      if (el.parentNode) {
+        el.parentNode.removeChild(el)
+      }
+      this.$instance.$destroy()
+      this.$instance = null
     }
-  }
-
-  setCompoProp(key, val) {
-    this.instance[key] = val;
   }
 
   get instance() {
     if (!this.$instance) {
-      const el = document.createElement(this.opts.wrapperTag);
-      elBody.appendChild(el);
+      const el = document.createElement('div')
+      elBody.appendChild(el)
 
-      this.$instance = new Vue(Object.assign({}, { el }, this.Compo));
+      this.$instance = new Vue(Object.assign({}, { el }, this.Compo))
+      this.$instance.enable = false
 
       this.$instance.$watch('enable', (val) => {
-        if (!this.opts.hideApp) return;
+        if (!this.hideEl) return
 
         if (val) {
-          hideAppEl(this.appEl);
+          hideEl(this.hideEl)
         } else {
-          showAppEl(this.appEl);
+          showEl(this.hideEl)
         }
-      });
+      })
     }
 
-    return this.$instance;
+    return this.$instance
   }
 }
-
-
-export default InsertCompo;

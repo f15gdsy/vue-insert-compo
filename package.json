@@ -10,7 +10,8 @@
   },
   "scripts": {
     "start": "webpack -w",
-    "test": "ava -w -v --no-power-assert --fail-fast"
+    "test-w": "ava -w -v --no-power-assert --fail-fast",
+    "test": "nyc ava"
   },
   "devDependencies": {
     "ava": "^0.18.2",
@@ -19,6 +20,7 @@
     "babel-preset-env": "^1.2.1",
     "babel-register": "^6.24.0",
     "browser-env": "^2.0.25",
+    "nyc": "^10.1.2",
     "vue": "^2.2.2",
     "webpack": "^2.2.1"
   },
@@ -27,6 +29,7 @@
   },
   "ava": {
     "require": [
+      "babel-register",
       "./test/helpers/setup-browser-env.js"
     ]
   }

@@ -1,7 +1,7 @@
 import Vue from 'vue/dist/vue.min.js'
 import VueRuntime from 'vue'
 import test from 'ava'
-import InsertCompo from '../dist/vue-insert-compo.min.js'
+import InsertCompo from '../src'
 
 const res = Vue.compile('<span id="compo" v-if="enable">{{ message }}</span>')
 
@@ -24,23 +24,29 @@ const CompoNoEnable = {
 
 const body = document.querySelector('body')
 
-// Vue.nextTick Required for Vue rendering
-function timeout(func) {
+function timeout() {
   return new Promise(resolve => {
-    Vue.nextTick(() => {
-      resolve()
-    })
+    Vue.nextTick(resolve)
   })
+}
+
+function createApp() {
+  const app = document.createElement('div')
+  app.setAttribute('id', 'app')
+  body.appendChild(app)
+  return app
+}
+
+function clearupDOM() {
+  for (let i = body.childNodes.length - 1; i >= 0; i--) {
+    body.removeChild(body.childNodes[i])
+  }
 }
 
 test.afterEach.always('cleanup', t => {
   t.context.insert ? t.context.insert.destroy() : (() => {})()
 
-  for (let i = body.childNodes.length - 1; i >= 0; i--) {
-    body.removeChild(body.childNodes[i])
-  }
-
-  console.log()
+  clearupDOM()
 })
 
 //
@@ -117,11 +123,23 @@ test.serial('.toggle() can toggle the Vue component', async t => {
 })
 
 
-test.serial('.destroy() correctly destroys the Vue component and the DOM', async t => {
+test.serial('.destroy() destroys the Vue component and the DOM', async t => {
   const insert = new InsertCompo(Compo)
   t.context.insert = insert
 
   await insert.enable()
+
+  insert.destroy()
+
+  const el = document.querySelector('#compo')
+
+  t.is(el, null)
+  t.is(insert.$instance, null)
+})
+
+test.serial('.destroy() destroys the Vue component and the DOM even its not enabled yet', async t => {
+  const insert = new InsertCompo(Compo)
+  t.context.insert = insert
 
   insert.destroy()
 
@@ -136,9 +154,7 @@ test.serial('.destroy() correctly destroys the Vue component and the DOM', async
 // Tests - Opts
 //
 test.serial('{ hideEl: selector } will hide the element when insert.enable()', async t => {
-  const app = document.createElement('div')
-  app.setAttribute('id', 'app')
-  body.appendChild(app)
+  const app = createApp()
 
   const insert = new InsertCompo(Compo, {
     hideEl: '#app'
@@ -147,7 +163,7 @@ test.serial('{ hideEl: selector } will hide the element when insert.enable()', a
 
   t.not(document.querySelector('#app'), null, '#app mounted')
 
-  await await insert.enable()
+  await insert.enable()
 
   t.is(app.style.visibility, 'hidden')
   t.is(app.style.height, '0px')
@@ -155,20 +171,32 @@ test.serial('{ hideEl: selector } will hide the element when insert.enable()', a
 })
 
 test.serial('{ hideEl: el } will hide the element when insert.enable()', async t => {
-  const app = document.createElement('div')
-  app.setAttribute('id', 'app')
-  body.appendChild(app)
+  const app = createApp()
 
   const insert = new InsertCompo(Compo, { hideEl: app })
   t.context.insert = insert
 
   t.not(document.querySelector('#app'), null, '#app mounted')
 
-  await await insert.enable()
+  await insert.enable()
 
   t.is(app.style.visibility, 'hidden')
   t.is(app.style.height, '0px')
   t.is(app.style.overflow, 'hidden')
+})
+
+test.serial('{ hideEl: elOrSelector } will show the element when insert.disable()', async t => {
+  const app = createApp()
+
+  const insert = new InsertCompo(Compo, { hideEl: app })
+  t.context.insert = insert
+
+  await insert.enable()
+  await insert.disable()
+
+  t.is(app.style.visibility, 'visible')
+  t.is(app.style.height, 'auto')
+  t.is(app.style.overflow, 'inherit')
 })
 
 test.serial('{ hideEl: invalid } will raise an error', async t => {

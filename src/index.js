@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import utils from './utils'
 
 const elBody = document.querySelector('body')
 
@@ -6,31 +7,12 @@ const DEFAULT_OPTS = {
   hideEl: null
 }
 
-function hideEl(el) {
-  el.style.visibility = 'hidden'
-  el.style.height = '0'
-  el.style.overflow = 'hidden'
-}
-
-function showEl(el) {
-  el.style.visibility = 'visible'
-  el.style.height = 'auto'
-  el.style.overflow = 'inherit'
-}
-
-function checkCompo(Compo) {
-  const defaultData = typeof Compo.data === 'function' ? Compo.data() : Compo.data
-  if (defaultData.enable === undefined) {
-    throw new TypeError('Vue Insert Compo: { Boolean } enable - is required in data()')
-  }
-}
-
-
 export default class InsertCompo {
   constructor(Compo, userOpts) {
-    checkCompo(Compo)
+    utils.checkCompo(Compo)
 
     this.Compo = Compo
+    this.$instance = null
     this.$update(userOpts)
   }
 
@@ -77,6 +59,7 @@ export default class InsertCompo {
   destroy() {
     if (this.$instance) {
       const el = this.$instance.$el
+      /* istanbul ignore else */
       if (el.parentNode) {
         el.parentNode.removeChild(el)
       }
@@ -97,9 +80,9 @@ export default class InsertCompo {
         if (!this.hideEl) return
 
         if (val) {
-          hideEl(this.hideEl)
+          utils.hideEl(this.hideEl)
         } else {
-          showEl(this.hideEl)
+          utils.showEl(this.hideEl)
         }
       })
     }

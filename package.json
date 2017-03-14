@@ -11,8 +11,7 @@
   "scripts": {
     "start": "webpack -w",
     "test-w": "ava -w -v --no-power-assert --fail-fast",
-    "test-r": "nyc ava",
-    "test": "ava -v"
+    "test": "nyc ava && nyc report --reporter=lcov > coverage.lcov && codecov"
   },
   "devDependencies": {
     "ava": "^0.18.2",
@@ -21,6 +20,7 @@
     "babel-preset-env": "^1.2.1",
     "babel-register": "^6.24.0",
     "browser-env": "^2.0.25",
+    "codecov": "^1.0.1",
     "nyc": "^10.1.2",
     "vue": "^2.2.2",
     "webpack": "^2.2.1"

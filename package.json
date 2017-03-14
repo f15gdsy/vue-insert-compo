@@ -11,7 +11,8 @@
   "scripts": {
     "start": "webpack -w",
     "test-w": "ava -w -v --no-power-assert --fail-fast",
-    "test": "nyc ava"
+    "test-r": "nyc ava",
+    "test": "ava -v"
   },
   "devDependencies": {
     "ava": "^0.18.2",

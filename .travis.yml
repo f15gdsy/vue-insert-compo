@@ -5,6 +5,7 @@ node_js:
 - '6.7'
 cache:
   directories: node_modules
+install: npm install --registry=https://registry.npmjs.org/
 after_success:
 - bash <(curl -s https://codecov.io/bash)
 env:

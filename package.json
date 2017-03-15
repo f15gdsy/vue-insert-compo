@@ -37,7 +37,7 @@
   "ava": {
     "require": [
       "babel-register",
-      "./test/helpers/setup-browser-env.js"
+      "./test/unit/helpers/setup-browser-env.js"
     ]
   }
 }

@@ -1,7 +1,7 @@
 import Vue from 'vue/dist/vue.min.js'
 import VueRuntime from 'vue'
 import test from 'ava'
-import InsertCompo from '../src'
+import InsertCompo from '../../src'
 
 const res = Vue.compile('<span id="compo" v-if="enable">{{ message }}</span>')
 

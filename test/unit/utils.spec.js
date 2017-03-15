@@ -1,6 +1,6 @@
 import test from 'ava'
 import Vue from 'vue/dist/vue.min.js'
-import utils from '../src/utils'
+import utils from '../../src/utils'
 
 const res = Vue.compile('<span id="compo" v-if="enable">{{ message }}</span>')
 

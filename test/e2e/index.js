@@ -1,5 +1,3 @@
-const config = require('../../nightwatch.conf')
-
 module.exports = {
   'Demo test Baidu': browser => {
     browser

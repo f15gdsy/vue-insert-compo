@@ -11,8 +11,9 @@
   "scripts": {
     "start": "webpack -w",
     "test-w": "ava test/unit -w -v --no-power-assert --fail-fast",
-    "e2e": "nightwatch --config nightwatch.conf.js",
-    "test": "nyc ava test/unit && nyc report --reporter=lcov > coverage.lcov && codecov && npm run e2e"
+    "e2e:local": "nightwatch --config build/nightwatch.local.conf.js",
+    "e2e:sauce": "nightwatch --config build/nightwatch.sauce.conf.js",
+    "test": "nyc ava test/unit && nyc report --reporter=lcov > build/coverage.lcov && codecov && npm run e2e:sauce"
   },
   "devDependencies": {
     "ava": "^0.18.2",

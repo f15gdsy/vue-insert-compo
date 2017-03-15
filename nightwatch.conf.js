@@ -15,9 +15,9 @@ module.exports = {
 
   'test_settings': {
     'default': {
-      "launch_url": "http://ondemand.saucelabs.com:80",
-      "selenium_port": 80,
-      "selenium_host": "ondemand.saucelabs.com",
+      "launch_url": "",
+      "selenium_port": 4445,
+      "selenium_host": "localhost",
       "silent": true,
       "screenshots": {
         "enabled": true, // save screenshots to this directory (excluded by .gitignore)

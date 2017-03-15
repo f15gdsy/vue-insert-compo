@@ -12,7 +12,7 @@
     "start": "webpack -w",
     "test-w": "ava test/unit -w -v --no-power-assert --fail-fast",
     "e2e": "nightwatch --config nightwatch.conf.js",
-    "test": "nyc ava test/unit && nyc report --reporter=lcov > coverage.lcov && codecov"
+    "test": "nyc ava test/unit && nyc report --reporter=lcov > coverage.lcov && codecov && npm run e2e"
   },
   "devDependencies": {
     "ava": "^0.18.2",

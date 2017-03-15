@@ -10,8 +10,9 @@
   },
   "scripts": {
     "start": "webpack -w",
-    "test-w": "ava -w -v --no-power-assert --fail-fast",
-    "test": "nyc ava && nyc report --reporter=lcov > coverage.lcov && codecov"
+    "test-w": "ava test/unit -w -v --no-power-assert --fail-fast",
+    "e2e": "nightwatch --config nightwatch.conf.js",
+    "test": "nyc ava test/unit && nyc report --reporter=lcov > coverage.lcov && codecov"
   },
   "devDependencies": {
     "ava": "^0.18.2",
@@ -20,8 +21,13 @@
     "babel-preset-env": "^1.2.1",
     "babel-register": "^6.24.0",
     "browser-env": "^2.0.25",
+    "chromedriver": "^2.28.0",
     "codecov": "^1.0.1",
+    "env2": "^2.1.1",
+    "geckodriver": "^1.4.0",
+    "nightwatch": "^0.9.13",
     "nyc": "^10.1.2",
+    "selenium-server": "^3.3.1",
     "vue": "^2.2.2",
     "webpack": "^2.2.1"
   },

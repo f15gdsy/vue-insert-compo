@@ -24,34 +24,22 @@ module.exports = {
       }
     },
 
-    'local': {
-      'selenium_port': 4444,
-      'selenium_host': 'localhost',
-      'silent': true,
-      'screenshots': {
-        'enabled': true,
-        'on_failure': true,
-        'on_error': false,
-        'path': 'test/e2e/screenshots'
-      }
-    },
-
     'chrome': {
       'desiredCapabilities': {
         'browserName': 'chrome',
         'javascriptEnabled': true,
         'acceptSslCerts': true
       }
-    }
+    },
 
-  //   'firefox': {
-  //     'desiredCapabilities': {
-  //       'browserName': 'firefox',
-  //       'javascriptEnabled': true,
-  //       'acceptSslCerts': true,
-  //       'marionette': true
-  //     }
-  //   },
+    'firefox': {
+      'desiredCapabilities': {
+        'browserName': 'firefox',
+        'javascriptEnabled': true,
+        'acceptSslCerts': true,
+        'marionette': true
+      }
+    }
 
   //   'phantomjs': {
   //     'desiredCapabilities': {

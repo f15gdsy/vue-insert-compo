@@ -1,5 +1,3 @@
-require('env2')('.env')
-
 module.exports = {
   'src_folders': ['test/e2e'],
   'output_folder': 'test/e2e/reports',
@@ -25,8 +23,8 @@ module.exports = {
         "enabled": true, // save screenshots to this directory (excluded by .gitignore)
         "path": './screenshots'
       },
-      "username" : "${SAUCE_USERNAME}",     // if you want to use Saucelabs remember to
-      "access_key" : "${SAUCE_ACCESS_KEY}", // export your environment variables (see readme)
+      "username" : process.env.SAUCE_USERNAME,     // if you want to use Saucelabs remember to
+      "access_key" : process.env.SAUCE_ACCESS_KEY, // export your environment variables (see readme)
       "globals": {
         "waitForConditionTimeout": 10000    // wait for content on the page before continuing
       }

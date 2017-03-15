@@ -15,7 +15,7 @@ module.exports = {
 
   'test_settings': {
     'default': {
-      "launch_url": "http://localhost", // we're testing a Public or "staging" site on Saucelabs
+      "launch_url": "http://ondemand.saucelabs.com:80",
       "selenium_port": 80,
       "selenium_host": "ondemand.saucelabs.com",
       "silent": true,
@@ -23,10 +23,15 @@ module.exports = {
         "enabled": true, // save screenshots to this directory (excluded by .gitignore)
         "path": './screenshots'
       },
-      "username" : process.env.SAUCE_USERNAME,     // if you want to use Saucelabs remember to
-      "access_key" : process.env.SAUCE_ACCESS_KEY, // export your environment variables (see readme)
+      username: process.env.SAUCE_USERNAME,
+      access_key: process.env.SAUCE_ACCESS_KEY,
       "globals": {
         "waitForConditionTimeout": 10000    // wait for content on the page before continuing
+      },
+      desiredCapabilities: {
+        build: `build-${process.env.TRAVIS_JOB_NUMBER}`,
+        public: 'public',
+        'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER
       }
     },
 

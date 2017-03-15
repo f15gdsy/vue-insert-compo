@@ -1,6 +1,6 @@
 module.exports = {
-  'src_folders': ['../test/e2e'],
-  'output_folder': '../test/e2e/reports',
+  'src_folders': ['test/e2e'],
+  'output_folder': 'test/e2e/reports',
 
   'test_settings': {
     'default': {

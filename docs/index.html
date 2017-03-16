@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <title>Vue Insert Compo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="charset" content="UTF8">
+    <meta name="description" content="A lightweight helper to insert Vue component and create Vue popups easily.">
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <article class="wrapper">
+      <header class="header">
+        <img src="imgs/logo.svg"
+          alt="Vue Insert Compo Logo"
+          class="header__logo">
+        <h1 class="header__title u-txt-serif">Vue Insert Compo</h1>
+        <p class="header__desc">A lightweight helper to insert Vue component and create Vue popups easily.</p>
+        <div class="header__links">
+          <a href="https://github.com/f15gdsy/vue-insert-compo"
+            class="header__link">Docs on Github</a>
+          <a href="https://github.com/f15gdsy/vue-insert-compo"
+            class="header__link">Check out Demos</a>
+        </div>
+      </header>
+
+      <section class="body">
+        <h2 class="body__title u-txt-serif">Demos</h2>
+        <div class="body__demos">
+          <article class="body__demo demo">
+            <h3 class="demo__title u-txt-serif">Modal</h3>
+            <img src="imgs/modal.svg"
+              alt="Modal Icon"
+              class="demo__img demo__img--modal">
+            <div class="demo__descs">
+              <p class="demo__desc">
+                It creates a mode that disable the main window, but keeps it visible with the modal window as a child window in front of it.
+              </p>
+              <p class="demo__desc">
+                It captures user's attention effectively. Usually used with forms, alerts, and other important events.
+              </p>
+            </div>
+            <div class="demo__btn" data-btn-modal>Run</div>
+          </article>
+
+          <article class="body__demo demo">
+            <h3 class="demo__title u-txt-serif">Notification</h3>
+            <img src="imgs/notification.svg"
+              alt="Notification Icon"
+              class="demo__img demo__img--notification">
+            <div class="demo__descs">
+              <p class="demo__desc">
+                Having a global notification, without disabling user interaction with the main window.
+              </p>
+              <p class="demo__desc">
+                It's lighter than modal. Usually used as a feedback to a previous user interaction.
+              </p>
+            </div>
+            <div class="demo__btn" data-btn-notification>Run</div>
+          </article>
+
+          <article class="body__demo demo">
+            <h3 class="demo__title u-txt-serif">Loading</h3>
+            <img src="imgs/loading.svg"
+              alt="Loading Icon"
+              class="demo__img demo__img--loading">
+            <div class="demo__descs">
+              <p class="demo__desc">
+                Displays a loading animation at the top of the viewport, without blocking user interaction with the main window.
+              </p>
+              <p class="demo__desc">
+                Loading animation relieves user's anxiousness when waiting for something to happen.
+              </p>
+            </div>
+            <div class="demo__btn" data-btn-loading>Run</div>
+          </article>
+
+          <article class="body__demo demo">
+            <h3 class="demo__title u-txt-serif">Message</h3>
+            <img src="imgs/message.svg"
+              alt="Modal Icon"
+              class="demo__img demo__img--message">
+            <div class="demo__descs">
+              <p class="demo__desc">
+                It creates a small stackable message window that waits for the user to process, wihout blocking user's interaction with the main window.
+              </p>
+              <p class="demo__desc">
+                The messages needs to be handled when the user is free, so they stack quietly at the corder.
+              </p>
+            </div>
+            <div class="demo__btn" data-btn-message>Run</div>
+          </article>
+        </div>
+      </section>
+    </article>
+
+    <div class="messages"></div>
+    <script src="https://unpkg.com/vue@2.2.4/dist/vue.min.js"></script>
+    <script src="vue-insert-compo.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

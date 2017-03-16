@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="62px" height="57px" viewBox="0 0 62 57" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>Popup</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop" transform="translate(-156.000000, -791.000000)" fill="#444444">
+            <g id="Group" transform="translate(112.000000, 724.000000)">
+                <g id="Popup" transform="translate(44.500000, 67.000000)">
+                    <path d="M30.5,0 L30.5,34.6731197 L61,34.6731197 L61,0 L30.5,0 Z M56.6428571,30.3389797 L34.8571428,30.3389797 L34.8571428,8.66827994 L56.6428571,8.66827994 L56.6428571,30.3389797 Z M47.9285714,39.0072596 L47.9285714,52.0096795 L4.35714287,52.0096795 L4.35714287,17.3365598 L26.1428572,17.3365598 L26.1428572,8.66827994 L0,8.66827994 L0,56.3438195 L52.2857143,56.3438195 L52.2857143,39.0072596 L47.9285714,39.0072596 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

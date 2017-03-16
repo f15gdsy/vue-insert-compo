@@ -1,10 +1,9 @@
 import Vue from 'vue'
 import utils from './utils'
 
-const elBody = document.querySelector('body')
-
 const DEFAULT_OPTS = {
-  hideEl: null
+  hideEl: null,
+  wrapperEl: null
 }
 
 export default class InsertCompo {
@@ -21,14 +20,29 @@ export default class InsertCompo {
 
     const elToHide = this.opts.hideEl
 
-    if (!elToHide) return
+    /* istanbul ignore else */
+    if (elToHide) {
+      if (typeof elToHide === 'string') {
+        this.hideEl = document.querySelector(elToHide)
+      } else if (elToHide.tagName) {
+        this.hideEl = elToHide
+      } else {
+        throw new TypeError('Vue Insert Compo: invalid hideEl')
+      }
+    }
 
-    if (typeof elToHide === 'string') {
-      this.hideEl = document.querySelector(elToHide)
-    } else if (elToHide.tagName) {
-      this.hideEl = elToHide
+    const wrapperEl = this.opts.wrapperEl
+
+    if (wrapperEl) {
+      if (typeof wrapperEl === 'string') {
+        this.wrapperEl = document.querySelector(wrapperEl)
+      } else if (wrapperEl.tagName) {
+        this.wrapperEl = wrapperEl
+      } else {
+        throw new TypeError('Vue Insert Compo: invalid wrapperEl')
+      }
     } else {
-      throw new TypeError('Vue Insert Compo: invalid hideEl')
+      this.wrapperEl = document.querySelector('body')
     }
   }
 
@@ -71,7 +85,7 @@ export default class InsertCompo {
   get instance() {
     if (!this.$instance) {
       const el = document.createElement('div')
-      elBody.appendChild(el)
+      this.wrapperEl.appendChild(el)
 
       this.$instance = new Vue(Object.assign({}, { el }, this.Compo))
       this.$instance.enable = false

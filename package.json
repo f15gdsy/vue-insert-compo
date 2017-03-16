@@ -9,28 +9,32 @@
     "email": "f15gdsy@gmail.com"
   },
   "scripts": {
-    "start": "webpack -w",
+    "start": "rollup -c build/rollup.config.js -w",
     "test-w": "ava test/unit -w -v --no-power-assert --fail-fast",
     "e2e:local": "nightwatch --config build/nightwatch.local.conf.js",
     "e2e:sauce": "nightwatch --config build/nightwatch.sauce.conf.js",
-    "test": "nyc ava test/unit && nyc report --reporter=lcov > build/coverage.lcov && codecov && npm run e2e:sauce"
+    "test": "nyc ava test/unit && nyc report --reporter=lcov > build/coverage.lcov && codecov && npm run e2e:sauce",
+    "build": "rollup -c build/rollup.config.js"
   },
   "devDependencies": {
     "ava": "^0.18.2",
-    "babel-core": "^6.23.1",
-    "babel-loader": "^6.4.0",
-    "babel-preset-env": "^1.2.1",
+    "babel-preset-env": "^1.2.2",
     "babel-register": "^6.24.0",
     "browser-env": "^2.0.25",
+    "buble": "^0.15.2",
     "chromedriver": "^2.28.0",
     "codecov": "^1.0.1",
     "env2": "^2.1.1",
     "geckodriver": "^1.4.0",
     "nightwatch": "^0.9.13",
     "nyc": "^10.1.2",
+    "rollup": "^0.41.5",
+    "rollup-plugin-buble": "^0.15.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-uglify": "^1.0.1",
+    "rollup-watch": "^3.2.2",
     "selenium-server": "^3.3.1",
-    "vue": "^2.2.2",
-    "webpack": "^2.2.1"
+    "vue": "^2.2.2"
   },
   "peerDependencies": {
     "vue": "^2.2.2"

@@ -1,0 +1,290 @@
+/**
+ * Reset
+ */
+* {
+  font-size: 16px;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+body {
+  /*background-color: #FAF4D5;*/
+  /*background-image: radial-gradient(90vw at 100% 50%, #FAF4D5, #D1BF60);*/
+  color: #444;
+  font-family: 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
+.u-txt-serif {
+  font-family: didot, 'Bodoni 72', Georgia, 'Times New Roman', Times, serif;
+}
+
+.header {
+  text-align: center;
+}
+
+.header__logo {
+  margin-top: 170px;
+}
+
+.header__title {
+  font-size: 32px;
+  margin-top: 50px;
+}
+
+.header__desc {
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0 auto;
+  margin-top: 40px;
+  width: 365px;
+}
+
+.header__links {
+  margin-top: 30px;
+}
+
+.header__link {
+  font-size: 14px;
+  margin: 0 10px;
+  opacity: .5;
+  transition: opacity .25s;
+}
+.header__link:hover {
+  opacity: .75;
+}
+.header__link:visited {
+  color: inherit;
+}
+
+
+.body {
+  margin: 180px 0 100px;
+  text-align: center;
+}
+
+.body__title {
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.body__demos {
+  display: flex;
+  justify-content: center;
+  margin-top: 55px;
+}
+
+.body__demo {
+  margin: 0 30px;
+  width: 150px;
+}
+
+
+.demo {}
+
+.demo__title {
+  font-size: 20px;
+}
+
+.demo__img {
+  margin-top: 37px;
+}
+.demo__img--modal {
+  padding-top: 3px;
+}
+.demo__img--notification {
+  padding: 3px 0;
+}
+.demo__img--loading {
+  padding: 1px 0;
+}
+.demo__img--message {
+  padding: 7px 0 8px;
+}
+
+.demo__descs {
+  height: 300px;
+}
+
+.demo__desc {
+  line-height: 20px;
+  margin-top: 10px;
+  text-align: left;
+  width: 150px;
+}
+.demo__desc:first-of-type {
+  margin-top: 40px;
+}
+
+.demo__btn {
+  color: #FAF4D5;
+  cursor: pointer;
+  background-color: #444;
+  border-radius: 3px;
+  height: 34px;
+  line-height: 34px;
+  margin-top: 20px;
+  transition: background-color .25s;
+  width: 100px;
+}
+.demo__btn:hover {
+  background-color: #111;
+}
+
+
+
+/**
+ * Modal
+ */
+.modal {
+  background-color: rgba(255, 255, 255, .95);
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.modal__title {
+  background-color: #FAF4D5;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
+  left: 50%;
+  position: absolute;
+  padding: 50px 120px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+/**
+ * Notification
+ */
+.notification {
+  background-color: #FAF4D5;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
+  left: 50%;
+  padding: 10px 20px;
+  position: fixed;
+  top: 20px;
+  transform: translateX(-50%);
+}
+.notification::before {
+  background-color: #444;
+  content: '';
+  display: block;
+  height: 36px;
+  left: -36px;
+  position: absolute;
+  top: 0;
+  width: 36px;
+}
+
+
+/**
+ * Loading
+ */
+.loading {
+  animation-name: loading;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  background-color: #444;
+  height: 2px;
+  position: fixed;
+  top: 0;
+  transform-origin: 0% 50%;
+  width: 100%;
+}
+
+
+/**
+ * Message
+ */
+.messages {
+  position: fixed;
+  right: 30px;
+  top: 20px;
+}
+
+.message {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
+  padding: 10px 10px;
+  position: absolute;
+  right: 0;
+  transition: top .3s;
+  width: 200px;
+}
+
+.message__close {
+  cursor: pointer;
+  position: absolute;
+  right: -20px;
+  top: 10px;
+}
+
+
+/**
+ * Transition
+ */
+.fade-enter-active,
+.fade-leave-active {
+  -webkit-transition: opacity .25s linear;
+  -moz-transition: opacity .25s linear;
+  transition: opacity .25s linear;
+}
+
+.fade-enter-active,
+.fade-leave {
+  opacity: 1;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+
+
+.snap-enter-active,
+.snap-leave-active {
+  -webkit-transition: opacity .2s ease-in-out, top .2s;
+  -moz-transition: opacity .2s ease-in-out, top .2s;
+  transition: opacity .2s ease-in-out, top .2s;
+}
+
+.snap-enter-active,
+.snap-leave {
+  opacity: 1;
+}
+
+.snap-enter,
+.snap-leave-active {
+  opacity: 0;
+  top: 0;
+}
+
+
+
+@keyframes loading {
+  0% {
+    transform: scaleX(0);
+  }
+
+  49.9% {
+    transform-origin: 0% 50%;
+  }
+
+  50% {
+    transform-origin: 100% 50%;
+    transform: scaleX(1);
+  }
+
+  100% {
+    transform-origin: 100% 50%;
+    transform: scaleX(0);
+  }
+}

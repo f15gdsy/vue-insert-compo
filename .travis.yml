@@ -2,7 +2,7 @@ addons:
   sauce_connect: true
 language: node_js
 node_js:
-  - "6.7"
+- "6.7"
 cache:
   directories: node_modules
 install: npm install --registry=https://registry.npmjs.org/

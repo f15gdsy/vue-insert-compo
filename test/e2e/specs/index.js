@@ -25,7 +25,7 @@ module.exports = {
       .click('[data-btn-loading]')
       .pause(100)
       .assert.elementPresent('.loading')
-      .click('[data-btn-loading')
+      .click('[data-btn-loading]')
       .pause(100)
       .assert.elementNotPresent('.loading')
 

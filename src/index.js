@@ -16,7 +16,10 @@ export default class InsertCompo {
   }
 
   $update(val) {
-    this.opts = Object.assign({}, DEFAULT_OPTS, val)
+    this.opts = {
+      hideEl: val ? val.hideEl : DEFAULT_OPTS.hideEl,
+      wrapperEl: val ? val.wrapperEl : DEFAULT_OPTS.wrapperEl
+    }
 
     const elToHide = this.opts.hideEl
 
@@ -86,8 +89,9 @@ export default class InsertCompo {
     if (!this.$instance) {
       const el = document.createElement('div')
       this.wrapperEl.appendChild(el)
+      this.Compo.el = el
 
-      this.$instance = new Vue(Object.assign({}, { el }, this.Compo))
+      this.$instance = new Vue(this.Compo)
       this.$instance.enable = false
 
       this.$instance.$watch('enable', (val) => {

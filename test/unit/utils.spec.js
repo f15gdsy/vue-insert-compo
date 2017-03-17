@@ -39,9 +39,9 @@ test('show(el) shows the element', t => {
   const el = document.createElement('div')
   utils.showEl(el)
 
-  t.is(el.style.visibility, 'visible')
-  t.is(el.style.height, 'auto')
-  t.is(el.style.overflow, 'inherit')
+  t.is(el.style.visibility, '')
+  t.is(el.style.height, '')
+  t.is(el.style.overflow, '')
 })
 
 

@@ -168,6 +168,12 @@ test.serial('{ hideEl: selector } will hide the element when insert.enable()', a
   t.is(app.style.visibility, 'hidden')
   t.is(app.style.height, '0px')
   t.is(app.style.overflow, 'hidden')
+
+  await insert.disable()
+
+  t.is(app.style.visibility, '')
+  t.is(app.style.height, '')
+  t.is(app.style.overflow, '')
 })
 
 test.serial('{ hideEl: el } will hide the element when insert.enable()', async t => {

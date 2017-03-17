@@ -6,9 +6,9 @@ export default {
   },
 
   showEl(el) {
-    el.style.visibility = 'visible'
-    el.style.height = 'auto'
-    el.style.overflow = 'inherit'
+    el.style.visibility = ''
+    el.style.height = ''
+    el.style.overflow = ''
   },
 
   checkCompo(Compo) {

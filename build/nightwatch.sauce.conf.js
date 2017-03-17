@@ -1,7 +1,7 @@
 module.exports = {
   'src_folders': ['test/e2e/specs'],
   'output_folder': 'test/e2e/reports',
-  "custom_commands_path": ["node_modules/nightwatch-helpers/commands"],
+  "custom_commands_path": ["node_modules/nightwatch-helpers/commands", "test/e2e/helpers"],
   "custom_assertions_path": ["node_modules/nightwatch-helpers/assertions"],
 
   'test_settings': {

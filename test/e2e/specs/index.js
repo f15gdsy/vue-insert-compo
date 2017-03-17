@@ -49,5 +49,10 @@ module.exports = {
       .pause(100)
       .assert.count('.message', 0)
       .end()
+  },
+
+  afterEach: (browser, done) => {
+    browser.updateResults()
+    setTimeout(() => done(), 1000)
   }
 }

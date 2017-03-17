@@ -1,13 +1,29 @@
+<p align="center">
+  <a href="https://travis-ci.org/f15gdsy/vue-insert-compo"><img src="https://travis-ci.org/f15gdsy/vue-insert-compo.svg?branch=master" alt="Build Status"></a>
+  <a href="https://codecov.io/gh/f15gdsy/vue-insert-compo"><img src="https://codecov.io/gh/f15gdsy/vue-insert-compo/branch/master/graph/badge.svg" alt="Coverage Status"></a>
+  <a href="https://saucelabs.com/beta/builds/78a4d44d1e494763b9aed392f3e00e7b"><img src="https://saucelabs.com/buildstatus/vue-insert-compo" alt="Build Status"></a>
+  <img src="https://img.shields.io/badge/gzip-1.5KB-blue.svg" alt="GZIP Size">
+  <br>
+  <a href="https://saucelabs.com/beta/builds/78a4d44d1e494763b9aed392f3e00e7b"><img src="https://saucelabs.com/browser-matrix/vue-insert-compo.svg" alt="Build Status"></a>
+</p>
+
+
 # vue-insert-compo
-A lightweight helper to insert Vue component and create Vue popups easily.
+A lightweight helper to insert Vue component and create Vue popups easily. Check out [Demo](https://f15gdsy.github.io/vue-insert-compo/)
 
 ## What
 vue-insert-compo can help you insert Vue component dynamically into the DOM tree.
 Some use cases are:
-* global notifications
 * global modals
-* global masks
+* global notifications
+* global loading
+* global messages
 * anything you can think of
+
+### Browser Compatabilities
+Supports all major browsers, IE >= 9.
+
+NOTE: For IE 9, you need a Promise polyfill to use vue-insert-compo.
 
 
 ## How
@@ -66,14 +82,19 @@ messenger.destroy()   // Destroy the Alert component
 #### params:
 * { Component } Compo - A valid Vue Component, **requiring a boolean "enable" property in data().**
 * { Object } opts - Options
- * { String | HTMLElement } opts.hideEl - The element which will be hidden when the component is enabled, and shown when the component is disabled. Can left empty if you don't want this behavior.
+ * { String | HTMLElement } opts.hideEl - The hideEl will be hidden when the component is enabled, and shown when the component is disabled. Can left empty if you don't want this behavior.
+ * { String | HTMLElement } opts.wrapperEl - The wrapperEl will be the wrapper of the component if specified. Default is null, and the component is inserted to the body.
+
 
 ```javascript
 const insertCompo = new VueInsertCompo(Compo)
 
 // or,
 
-const insertCompo = new VueInsertCompo(Compo, { hideEl: '#el-to-hide' })
+const insertCompo = new VueInsertCompo(Compo, { 
+  hideEl: '#el-to-hide',
+  wrapperEl: '#wrapper-el'
+})
 ```
 
 ### .enable()

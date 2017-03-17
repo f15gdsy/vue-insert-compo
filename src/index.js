@@ -8,6 +8,8 @@ const DEFAULT_OPTS = {
 
 export default class InsertCompo {
   constructor(Compo, userOpts) {
+    console.assert(typeof Promise !== 'undefined', `Vue Insert Compo: requires a Promise polyfill in this browser.`)
+
     utils.checkCompo(Compo)
 
     this.Compo = Compo

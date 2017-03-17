@@ -1,4 +1,5 @@
 import resolve from 'rollup-plugin-node-resolve'
+import commonjs from 'rollup-plugin-commonjs'
 import buble from 'rollup-plugin-buble'
 import uglify from 'rollup-plugin-uglify'
 
@@ -14,6 +15,9 @@ export default {
   },
   plugins: [
     resolve(),
+    commonjs({
+      include: 'node_modules/**'
+    }),
     buble(),
     uglify()
   ]

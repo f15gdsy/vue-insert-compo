@@ -4,8 +4,8 @@ module.exports = {
   'Docs Pages': browser => {
     browser
       .url('http://localhost:8080/docs')
-      .waitForElementVisible('body', 1000)
-      .waitForElementVisible('[data-btn-modal]', 1000)
+      .waitForElementVisible('body', 10000)
+      .waitForElementVisible('[data-btn-modal]', 10000)
       .click('[data-btn-modal]')
       .pause(300)
       .assert.containsText('.modal', txt)

@@ -6,6 +6,7 @@ module.exports = {
       .url('http://localhost:8080/docs')
       .waitForElementVisible('body', 10000)
       .waitForElementVisible('[data-btn-modal]', 10000)
+      .pause(1000)
       .click('[data-btn-modal]')
       .pause(300)
       .assert.containsText('.modal', txt)
@@ -14,6 +15,8 @@ module.exports = {
       .assert.elementNotPresent('.modal')
 
     browser
+      .waitForElementVisible('[data-btn-notification]', 10000)
+      .pause(1000)
       .click('[data-btn-notification]')
       .pause(300)
       .assert.containsText('.notification', txt)
@@ -22,6 +25,8 @@ module.exports = {
       .assert.elementNotPresent('.notification')
 
     browser
+      .waitForElementVisible('[data-btn-loading]', 10000)
+      .pause(1000)
       .click('[data-btn-loading]')
       .pause(100)
       .assert.elementPresent('.loading')
@@ -30,6 +35,8 @@ module.exports = {
       .assert.elementNotPresent('.loading')
 
     browser
+      .waitForElementVisible('[data-btn-message]', 10000)
+      .pause(1000)
       .click('[data-btn-message]')
       .pause(100)
       .assert.count('.message', 1)

@@ -41,6 +41,13 @@ module.exports = {
       }
     },
 
+    internet_explorer_9: {
+			desiredCapabilities: {
+				browserName: 'internet explorer',
+				version: '9'
+			}
+		},
+
     internet_explorer_10: {
 			desiredCapabilities: {
 				browserName: 'internet explorer',

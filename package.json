@@ -13,7 +13,7 @@
     "test-w": "ava test/unit -w -v --no-power-assert --fail-fast",
     "unit": "nyc ava test/unit && nyc report --reporter=lcov > build/coverage.lcov && codecov",
     "e2e:local": "node test/e2e/server.js --config build/nightwatch.local.conf.js",
-    "e2e:sauce": "node test/e2e/server.js --config build/nightwatch.sauce.conf.js --env chrome,firefox,internet_explorer_9,internet_explorer_11,edge",
+    "e2e:sauce": "node test/e2e/server.js --config build/nightwatch.sauce.conf.js --env chrome,firefox,internet_explorer_9,internet_explorer_10,internet_explorer_11,edge,android,ios",
     "test": "nyc ava test/unit && nyc report --reporter=lcov > build/coverage.lcov && codecov && npm run e2e:sauce",
     "build": "rollup -c build/rollup.config.js && rollup -c docs/rollup.config.js"
   },

@@ -185,22 +185,48 @@ test.serial('{ hideEl: el } will hide the element when insert.enable()', async t
   t.is(app.style.overflow, 'hidden')
 })
 
-test.serial('{ hideEl: elOrSelector } will show the element when insert.disable()', async t => {
-  const app = createApp()
-
-  const insert = new InsertCompo(Compo, { hideEl: app })
-  t.context.insert = insert
-
-  await insert.enable()
-  await insert.disable()
-
-  t.is(app.style.visibility, 'visible')
-  t.is(app.style.height, 'auto')
-  t.is(app.style.overflow, 'inherit')
-})
-
 test.serial('{ hideEl: invalid } will raise an error', async t => {
   t.throws(() => {
     new InsertCompo(Compo, { hideEl: true })
+  }, TypeError)
+})
+
+test.serial('{ wrapperEl: selector } lets the component to be inserted in it.', async t => {
+  const app = createApp()
+
+  const insert = new InsertCompo(Compo, { wrapperEl: '#app' })
+  t.context.insert = insert
+
+  await insert.enable()
+  let compo = document.querySelector('#compo')
+
+  t.true(app.contains(insert.instance.$el))
+
+  await insert.disable()
+  compo = document.querySelector('#compo')
+
+  t.is(compo, null)
+})
+
+test.serial('{ wrapperEl: el } lets the component to be inserted in it.', async t => {
+  const app = createApp()
+
+  const insert = new InsertCompo(Compo, { wrapperEl: app })
+  t.context.insert = insert
+
+  await insert.enable()
+  let compo = document.querySelector('#compo')
+
+  t.true(app.contains(insert.instance.$el))
+
+  await insert.disable()
+  compo = document.querySelector('#compo')
+
+  t.is(compo, null)
+})
+
+test.serial('{ wrapperEl: invalid } will raise an error', async t => {
+  t.throws(() => {
+    new InsertCompo(Compo, { wrapperEl: true })
   }, TypeError)
 })

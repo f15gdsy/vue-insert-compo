@@ -104,7 +104,7 @@ btnLoading.addEventListener('click', function() {
  * Message
  */
 var messageTpl = Vue.compile([
-  '<article v-if="enable" class="message" :style="top">',
+  '<article v-if="enable" class="message" :style="top" :id="\'message-\' + id">',
   '  <h3 class="message__title">Hello World!</h3>',
   '  <div class="message__close" @click="close">x</div>',
   '</article>'

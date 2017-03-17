@@ -14,8 +14,8 @@ a {
 
 
 body {
-  /*background-color: #FAF4D5;*/
-  /*background-image: radial-gradient(90vw at 100% 50%, #FAF4D5, #D1BF60);*/
+  /*background-color: #fff;*/
+  /*background-image: radial-gradient(90vw at 100% 50%, #fff, #D1BF60);*/
   color: #444;
   font-family: 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
@@ -122,7 +122,7 @@ body {
 }
 
 .demo__btn {
-  color: #FAF4D5;
+  color: #fff;
   cursor: pointer;
   background-color: #444;
   border-radius: 3px;
@@ -148,10 +148,11 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1;
 }
 
 .modal__title {
-  background-color: #FAF4D5;
+  background-color: #fff;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
   left: 50%;
   position: absolute;
@@ -165,13 +166,14 @@ body {
  * Notification
  */
 .notification {
-  background-color: #FAF4D5;
+  background-color: #fff;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
   left: 50%;
   padding: 10px 20px;
   position: fixed;
   top: 20px;
   transform: translateX(-50%);
+  z-index: 1;
 }
 .notification::before {
   background-color: #444;
@@ -198,6 +200,7 @@ body {
   top: 0;
   transform-origin: 0% 50%;
   width: 100%;
+  z-index: 1;
 }
 
 
@@ -206,11 +209,13 @@ body {
  */
 .messages {
   position: fixed;
-  right: 30px;
+  right: 50px;
   top: 20px;
+  z-index: 1;
 }
 
 .message {
+  background-color: #fff;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
   padding: 10px 10px;
   position: absolute;

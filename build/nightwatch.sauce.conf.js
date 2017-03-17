@@ -9,6 +9,10 @@ module.exports = {
       "selenium_port": 4445,
       "selenium_host": "localhost",
       "silent": true,
+      "request_timeout_options": {
+        "timeout": 180000,
+        "retry_attempts": 5
+      },
       "screenshots": {
         "enabled": true, // save screenshots to this directory (excluded by .gitignore)
         "path": './screenshots'

@@ -37,10 +37,29 @@ module.exports = {
       'desiredCapabilities': {
         'browserName': 'firefox',
         'javascriptEnabled': true,
-        'acceptSslCerts': true,
-        'marionette': true
+        'acceptSslCerts': true
       }
-    }
+    },
+
+    internet_explorer_10: {
+			desiredCapabilities: {
+				browserName: 'internet explorer',
+				version: '10'
+			}
+		},
+
+		internet_explorer_11: {
+			desiredCapabilities: {
+				browserName: 'internet explorer',
+				version: '11'
+			}
+		},
+
+    edge: {
+			desiredCapabilities: {
+				browserName: 'MicrosoftEdge'
+			}
+		}
 
   //   'phantomjs': {
   //     'desiredCapabilities': {

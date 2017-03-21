@@ -82,8 +82,8 @@ messenger.destroy()   // Destroy the Alert component
 #### params:
 * { Component } Compo - A valid Vue Component, **requiring a boolean "enable" property in data().**
 * { Object } opts - Options
- * { String | HTMLElement } opts.hideEl - The hideEl will be hidden when the component is enabled, and shown when the component is disabled. Can left empty if you don't want this behavior.
- * { String | HTMLElement } opts.wrapperEl - The wrapperEl will be the wrapper of the component if specified. Default is null, and the component is inserted to the body.
+  * { String | HTMLElement } opts.hideEl - The hideEl will be hidden when the component is enabled, and shown when the component is disabled. Can left empty if you don't want this behavior.
+  * { String | HTMLElement } opts.wrapperEl - The wrapperEl will be the wrapper of the component if specified. Default is null, and the component is inserted to the body.
 
 
 ```javascript

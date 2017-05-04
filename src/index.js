@@ -51,9 +51,20 @@ export default class InsertCompo {
     }
   }
 
-  enable() {
+  $applyOpts(opts) {
+    if (!opts) return
+
+    Object.keys(opts)
+      .forEach(key => {
+        this.instance[key] = opts[key]
+      })
+  }
+
+  enable(opts) {
     this.instance.enable = true
 
+    this.$applyOpts(opts)
+
     return new Promise(resolve => {
       Vue.nextTick(() => {
         resolve()
@@ -61,9 +72,11 @@ export default class InsertCompo {
     })
   }
 
-  disable() {
+  disable(opts) {
     this.instance.enable = false
 
+    this.$applyOpts(opts)
+
     return new Promise(resolve => {
       Vue.nextTick(() => {
         resolve()
@@ -71,7 +84,9 @@ export default class InsertCompo {
     })
   }
 
-  toggle() {
+  toggle(opts) {
+    this.$applyOpts(opts)
+
     return this.instance.enable ? this.disable() : this.enable()
   }
 
